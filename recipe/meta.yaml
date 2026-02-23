@@ -10,9 +10,10 @@ source:
   patches:
     - ufc-include-path.patch
     - numpy-prod.patch
+    - setuptools82.patch
 
 build:
-  number: 40
+  number: 41
   noarch: python
   script:
     - {{ PYTHON }} -m pip install . -vv
