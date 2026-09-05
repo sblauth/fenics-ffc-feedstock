@@ -3,7 +3,7 @@ About fenics-ffc-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/fenics-ffc-feedstock/blob/main/LICENSE.txt)
 
-Home: https://www.fenicsproject.org
+Home: https://www.fenicsproject.org/
 
 Package license: LGPL-3.0-or-later
 
@@ -11,22 +11,22 @@ Summary: The FEniCS Form Compiler
 
 Development: https://bitbucket.org/fenics-project/
 
-Documentation: https://fenics.readthedocs.io
+Documentation: https://fenics.readthedocs.io/
 
 FEniCS is a collection of free software for automated, efficient solution of differential equations
 (https://fenicsproject.org). It provides C++ and Python interfaces, and creates effecient solvers via
 expression of finite variational statements in a domain-specific language that are transformed and
 just-in-time compiled into efficient implementations.
 
-
 Current build status
 ====================
 
 
-<table><tr><td>All platforms:</td>
+<table><tr>
+    <td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=20819&branchName=main">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/fenics-ffc-feedstock?branchName=main">
+      <a href="https://github.com/conda-forge/fenics-ffc-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/fenics-ffc-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
     </td>
   </tr>
@@ -49,31 +49,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `fenics-ffc` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install fenics-ffc
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install fenics-ffc
 ```
 
-It is possible to list all of the versions of `fenics-ffc` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add fenics-ffc
+# for installing globally
+pixi global install fenics-ffc
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `fenics-ffc` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search fenics-ffc --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search fenics-ffc --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search fenics-ffc --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -85,6 +127,8 @@ mamba repoquery whoneeds fenics-ffc --channel conda-forge
 # List dependencies of `fenics-ffc`:
 mamba repoquery depends fenics-ffc --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge
