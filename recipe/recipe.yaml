@@ -15,9 +15,10 @@ source:
   patches:
     - ufc-include-path.patch
     - pr106.patch
+    - setuptools82.patch
 
 build:
-  number: 3
+  number: 2
   noarch: python
   script:
     - ${{ PYTHON }} -m pip install --no-deps . -vv

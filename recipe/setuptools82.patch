@@ -1,0 +1,28 @@
+From ae87eadd1c1518b4dc845e292670124115284b03 Mon Sep 17 00:00:00 2001
+From: Sebastian Blauth <sebastian.blauth@itwm.fraunhofer.de>
+Date: Mon, 23 Feb 2026 13:48:49 +0100
+Subject: [PATCH] replaces pkg_resources with importlib metadata
+
+---
+ ffc/__init__.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ffc/__init__.py b/ffc/__init__.py
+index d875bf8b..0d6fdb2d 100644
+--- a/ffc/__init__.py
++++ b/ffc/__init__.py
+@@ -14,9 +14,9 @@ The interface consists of the following functions:
+   ufc_signature      - Signature of UFC interface (SHA-1 hash of ufc.h)
+ """
+ 
+-import pkg_resources
++import importlib.metadata
+ 
+-__version__ = pkg_resources.get_distribution("fenics-ffc").version
++__version__ = importlib.metadata.version("fenics-ffc")
+ 
+ from ffc.git_commit_hash import git_commit_hash
+ 
+-- 
+2.47.3
+
