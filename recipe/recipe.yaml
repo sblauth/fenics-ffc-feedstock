@@ -1,23 +1,26 @@
-{% set version = "2019.2.0" %}
-{% set date = "20230719" %}
-{% set commit = "72129fd974f582bb1f7ed96121c3d216665c9ead" %}
+schema_version: 1
+
+context:
+  version: "2019.2.0"
+  date: 20230719
+  commit: 72129fd974f582bb1f7ed96121c3d216665c9ead
 
 package:
   name: fenics-ffc
-  version: {{ version }}.dev{{ date }}
+  version: ${{ version }}.dev${{ date }}
 
 source:
-  url: https://bitbucket.org/fenics-project/ffc/get/{{ commit }}.tar.gz
+  url: https://bitbucket.org/fenics-project/ffc/get/${{ commit }}.tar.gz
   sha256: 013426e23d0014a459dec697537a48b5173cdec4cdc66dbeb7eaa693120d2600
   patches:
     - ufc-include-path.patch
     - pr106.patch
 
 build:
-  number: 2
+  number: 3
   noarch: python
   script:
-    - {{ PYTHON }} -m pip install --no-deps . -vv
+    - ${{ PYTHON }} -m pip install --no-deps . -vv
     - mkdir -p $PREFIX/include
     - cp ffc/backends/ufc/*.h $PREFIX/include/
 
@@ -29,40 +32,41 @@ requirements:
     - python >=3.7
     - numpy
     - fenics-dijitso ==2019.1.0
-    - fenics-fiat =={{ version }}.dev*
+    - fenics-fiat ==${{ version }}.dev*
     - fenics-ufl-legacy ==2022.3.0
-test:
-  requires:
-    - pip
-  imports:
-    - ffc
-    - ffc.backends
-    - ffc.backends.dolfin
-    - ffc.backends.ufc
-    - ffc.errorcontrol
-    - ffc.quadrature
-  commands:
-    - ffc --help
-    - test -f $PREFIX/include/ufc.h
-    - test -f $PREFIX/include/ufc_geometry.h
-    - pip check
 
+tests:
+  - python:
+      imports:
+        - ffc
+        - ffc.backends
+        - ffc.backends.dolfin
+        - ffc.backends.ufc
+        - ffc.errorcontrol
+        - ffc.quadrature
+      pip_check: true
+  - requirements:
+      run:
+        - pip
+    script:
+      - ffc --help
+      - test -f $PREFIX/include/ufc.h
+      - test -f $PREFIX/include/ufc_geometry.h
 
 about:
-  home: https://www.fenicsproject.org
   license: LGPL-3.0-or-later
   license_file:
     - COPYING
     - COPYING.LESSER
-  summary: 'The FEniCS Form Compiler'
-
+  summary: The FEniCS Form Compiler
   description: |
     FEniCS is a collection of free software for automated, efficient solution of differential equations
     (https://fenicsproject.org). It provides C++ and Python interfaces, and creates effecient solvers via
     expression of finite variational statements in a domain-specific language that are transformed and
     just-in-time compiled into efficient implementations.
-  doc_url: https://fenics.readthedocs.io
-  dev_url: https://bitbucket.org/fenics-project/
+  homepage: https://www.fenicsproject.org
+  repository: https://bitbucket.org/fenics-project/
+  documentation: https://fenics.readthedocs.io
 
 extra:
   recipe-maintainers:
