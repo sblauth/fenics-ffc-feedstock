@@ -32,7 +32,7 @@ requirements:
     - python >=3.7
     - numpy
     - fenics-dijitso ==2019.1.0
-    - fenics-fiat ==${{ version }}.dev*
+    - fenics-fiat ${{ version }}.dev*
     - fenics-ufl-legacy ==2022.3.0
 
 tests:
